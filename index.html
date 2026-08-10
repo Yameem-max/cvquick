@@ -38,9 +38,52 @@ button:disabled{opacity:.45;cursor:not-allowed}
  .card{box-shadow:none;padding:0}
  .no-print{display:none!important}
 }
-</style>
-</head>
+.feedback-box {
+  margin-top: 35px;
+  padding: 22px;
+  background: #eef4ff;
+  border-radius: 12px;
+}
 
+.feedback-box h2 {
+  color: #123b7a;
+}
+
+.feedback-box input,
+.feedback-box textarea {
+  display: block;
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.feedback-box button {
+  background: #155eef;
+  color: white;
+}</style>
+</head>
+<section class="feedback-box">
+  <h2>Tell us about your experience</h2>
+
+  <p>
+    Your feedback helps improve CVQuick. You can share your name and email
+    voluntarily, or leave them blank.
+  </p>
+
+  <form action="https://formspree.io/f/myegwgnq" method="POST">
+    <label for="feedbackName">Name</label>
+    <input id="feedbackName" name="name" type="text">
+
+    <label for="feedbackEmail">Email</label>
+    <input id="feedbackEmail" name="email" type="email">
+
+    <label for="feedback">What did you think of CVQuick?</label>
+    <textarea id="feedback" name="feedback" required></textarea>
+
+    <input type="hidden" name="source" value="CVQuick website">
+
+    <button type="submit">Send feedback</button>
+  </form>
+</section>
 <body>
 <div class="container">
 <div class="card">
