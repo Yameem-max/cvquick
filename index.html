@@ -1,341 +1,373 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CVQuick</title>
-<style>
-:root{--blue:#155eef;--dark:#172033;--muted:#667085;--bg:#f3f6fb}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);font-family:Arial,sans-serif;color:var(--dark)}
-.container{max-width:850px;margin:30px auto;padding:18px}
-.card{background:white;padding:30px;border-radius:18px;box-shadow:0 8px 30px #10182818}
-h1{font-size:32px;color:var(--blue);margin:0 0 8px}
-h2{margin-top:0}
-.subtitle{color:var(--muted);line-height:1.5}
-.progress{height:9px;background:#e4e7ec;border-radius:20px;margin:24px 0}
-.progress-bar{height:100%;width:10%;background:var(--blue);border-radius:20px;transition:.3s}
-label{display:block;font-weight:bold;margin:18px 0 8px}
-input,textarea,select{width:100%;padding:14px;border:1px solid #d0d5dd;border-radius:10px;font-size:16px;font-family:inherit}
-textarea{min-height:125px;resize:vertical}
-.example{background:#eef4ff;color:#174ea6;padding:14px;border-radius:10px;margin-top:16px;line-height:1.5}
-.actions{display:flex;justify-content:space-between;gap:12px;margin-top:24px}
-button{border:0;border-radius:10px;padding:13px 19px;font-weight:bold;font-size:15px;cursor:pointer}
-.primary{background:var(--blue);color:white}
-.secondary{background:#e9eef5;color:var(--dark)}
-button:disabled{opacity:.45;cursor:not-allowed}
-.hidden{display:none}
-.small{font-size:13px;color:var(--muted);margin-top:22px}
-.cv{margin-top:30px;line-height:1.5}
-.cv h1{font-size:36px;color:#123b7a}
-.cv h2{font-size:17px;color:#123b7a;border-bottom:2px solid #123b7a;padding-bottom:5px;margin-top:26px}
-.contact{color:#555}
-.cv li{margin-bottom:8px}
-.notice{background:#fff8e6;border-left:4px solid #f5a400;padding:13px;margin-top:18px}
-@media print{
- body{background:white}
- .container{margin:0;padding:0}
- .card{box-shadow:none;padding:0}
- .no-print{display:none!important}
-}
-.feedback-box {
-  margin-top: 35px;
-  padding: 22px;
-  background: #eef4ff;
-  border-radius: 12px;
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CVQuick</title>
 
-.feedback-box h2 {
-  color: #123b7a;
-}
+  <style>
+    body {
+      margin: 0;
+      background: #f3f6fb;
+      color: #172033;
+      font-family: Arial, sans-serif;
+    }
 
-.feedback-box input,
-.feedback-box textarea {
-  display: block;
-  width: 100%;
-  margin-bottom: 12px;
-}
+    .container {
+      max-width: 760px;
+      margin: 30px auto;
+      padding: 18px;
+    }
 
-.feedback-box button {
-  background: #155eef;
-  color: white;
-}</style>
+    .card {
+      background: white;
+      padding: 28px;
+      border-radius: 16px;
+      box-shadow: 0 8px 25px rgba(0,0,0,.1);
+    }
+
+    h1 {
+      color: #155eef;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin: 20px 0 8px;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #ccd3df;
+      border-radius: 8px;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      min-height: 110px;
+    }
+
+    .progress {
+      height: 8px;
+      background: #e4e7ec;
+      border-radius: 10px;
+      margin: 24px 0;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 10%;
+      background: #155eef;
+      border-radius: 10px;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 24px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 8px;
+      padding: 13px 18px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .primary {
+      background: #155eef;
+      color: white;
+    }
+
+    .secondary {
+      background: #e8edf5;
+      color: #172033;
+    }
+
+    button:disabled {
+      opacity: .5;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .cv h2 {
+      color: #123b7a;
+      border-bottom: 2px solid #123b7a;
+      padding-bottom: 5px;
+      margin-top: 25px;
+    }
+
+    .contact {
+      color: #555;
+    }
+
+    @media print {
+      body {
+        background: white;
+      }
+
+      .card {
+        box-shadow: none;
+      }
+
+      .no-print {
+        display: none;
+      }
+    }
+  </style>
 </head>
-<section class="feedback-box">
-  <h2>Tell us about your experience</h2>
 
-  <p>
-    Your feedback helps improve CVQuick. You can share your name and email
-    voluntarily, or leave them blank.
-  </p>
-
-  <form action="https://formspree.io/f/myegwgnq" method="POST">
-    <label for="feedbackName">Name</label>
-    <input id="feedbackName" name="name" type="text">
-
-    <label for="feedbackEmail">Email</label>
-    <input id="feedbackEmail" name="email" type="email">
-
-    <label for="feedback">What did you think of CVQuick?</label>
-    <textarea id="feedback" name="feedback" required></textarea>
-
-    <input type="hidden" name="source" value="CVQuick website">
-
-    <button type="submit">Send feedback</button>
-  </form>
-</section>
 <body>
-<div class="container">
-<div class="card">
+  <div class="container">
+    <div class="card">
 
-<section id="formScreen">
-<h1>CVQuick</h1>
-<p class="subtitle">
-Answer simple questions in your own words and create a professional CV.
-You do not need formal work experience to use this app.
-</p>
+      <section id="formScreen">
+        <h1>CVQuick</h1>
+        <p>Answer simple questions and create a professional CV.</p>
 
-<div class="progress">
-<div id="progressBar" class="progress-bar"></div>
-</div>
+        <div class="progress">
+          <div id="progressBar" class="progress-bar"></div>
+        </div>
 
-<div id="questionArea"></div>
+        <div id="questionArea"></div>
 
-<div class="actions">
-<button id="backButton" class="secondary" onclick="goBack()">Back</button>
-<button id="nextButton" class="primary" onclick="goNext()">Next</button>
-</div>
+        <div class="actions">
+          <button id="backButton" class="secondary" type="button">
+            Back
+          </button>
 
-<p class="small">
-Prototype version. Your answers are stored only in this browser while the page is open.
-</p>
-</section>
+          <button id="nextButton" class="primary" type="button">
+            Next
+          </button>
+        </div>
+      </section>
 
-<section id="resultScreen" class="hidden">
-<div class="no-print">
-<h1>Your CV draft</h1>
-<p class="subtitle">
-Review every sentence and correct anything that is not accurate.
-</p>
+      <section id="resultScreen" class="hidden">
+        <div class="no-print">
+          <h1>Your CV draft</h1>
+          <button id="printButton" class="primary" type="button">
+            Print / Save as PDF
+          </button>
 
-<button class="primary" onclick="window.print()">Print / Save as PDF</button>
-<button class="secondary" onclick="startAgain()">Start again</button>
+          <button id="restartButton" class="secondary" type="button">
+            Start again
+          </button>
+        </div>
 
-<div class="notice">
-Never submit information that is false. Check your dates, contact details,
-qualifications, and work experience before applying.
-</div>
-</div>
+        <div id="cvOutput" class="cv"></div>
+      </section>
 
-<div id="cvOutput" class="cv"></div>
-</section>
-
-</div>
-</div>
-
-<script>
-const questions = [
-{
- key:"name",
- title:"About you",
- question:"What is your full name?",
- type:"input"
-},
-{
- key:"contact",
- title:"Contact details",
- question:"What phone number and professional email should employers use?",
- type:"input"
-},
-{
- key:"location",
- title:"Location",
- question:"Which city and country do you live in?",
- type:"input"
-},
-{
- key:"role",
- title:"Target job",
- question:"What job title are you applying for?",
- type:"input"
-},
-{
- key:"skills",
- title:"Your strengths",
- question:"What are you good at? Mention tasks, tools, software, subjects, or personal strengths.",
- type:"textarea",
- example:"Example: I can use Excel, help customers, repair equipment, organise stock, explain technical topics, or work well in a team."
-},
-{
- key:"experience",
- title:"Experience",
- question:"Tell us about work, informal work, volunteering, family-business work, freelance work, or practical projects.",
- type:"textarea",
- example:"You can include helping in a shop, repairing things, caring for people, selling products, school projects, or community work."
-},
-{
- key:"achievement",
- title:"Proof of ability",
- question:"Describe one problem you solved or task you completed successfully. What did you personally do?",
- type:"textarea",
- example:"Example: I organised stock, found missing items, and created a simple list that made it easier to find products."
-},
-{
- key:"education",
- title:"Education and training",
- question:"What did you study, where did you study, and when? Include courses, licences, apprenticeships, or training.",
- type:"textarea"
-},
-{
- key:"languages",
- title:"Languages",
- question:"Which languages can you speak, read, or write?",
- type:"input"
-},
-{
- key:"job",
- title:"Job advert",
- question:"Paste the job advert here if you want your CV tailored to that job. You may leave this blank.",
- type:"textarea"
-}
-];
-
-let currentQuestion = 0;
-let answers = {};
-
-function escapeHtml(value){
- return String(value || "").replace(/[&<>"']/g, function(character){
-  return {
-   "&":"&amp;",
-   "<":"&lt;",
-   ">":"&gt;",
-   '"':"&quot;",
-   "'":"&#039;"
-  }[character];
- });
-}
-
-function renderQuestion(){
- const item = questions[currentQuestion];
- const saved = answers[item.key] || "";
- const input = item.type === "textarea"
-  ? `<textarea id="answerInput" autofocus>${escapeHtml(saved)}</textarea>`
-  : `<input id="answerInput" autofocus value="${escapeHtml(saved)}">`;
-
- let html = `
-  <h2>Question ${currentQuestion + 1} of ${questions.length}</h2>
-  <label for="answerInput">${item.question}</label>
-  ${input}
- `;
-
- if(item.example){
-  html += `<div class="example"><strong>Helpful example:</strong><br>${item.example}</div>`;
- }
-
- document.getElementById("questionArea").innerHTML = html;
- document.getElementById("progressBar").style.width =
-  ((currentQuestion + 1) / questions.length * 100) + "%";
-
- document.getElementById("backButton").disabled = currentQuestion === 0;
- document.getElementById("nextButton").textContent =
-  currentQuestion === questions.length - 1 ? "Create my CV" : "Next";
-
- document.getElementById("answerInput").focus();
-}
-
-function saveCurrentAnswer(){
- const input = document.getElementById("answerInput");
- if(input){
-  answers[questions[currentQuestion].key] = input.value.trim();
- }
-}
-
-function goNext(){
- saveCurrentAnswer();
-
- if(currentQuestion < questions.length - 1){
-  currentQuestion++;
-  renderQuestion();
- }else{
-  createCV();
- }
-}
-
-function goBack(){
- saveCurrentAnswer();
-
- if(currentQuestion > 0){
-  currentQuestion--;
-  renderQuestion();
- }
-}
-
-function splitIntoBullets(text){
- if(!text) return "<li>Add relevant experience or projects.</li>";
-
- return text
-  .split(/[.!?
-]+/)
-  .map(part => part.trim())
-  .filter(Boolean)
-  .map(part => `<li>${escapeHtml(part.replace(/^[-•]s*/, ""))}</li>`)
-  .join("");
-}
-
-function createCV(){
- document.getElementById("formScreen").classList.add("hidden");
- document.getElementById("resultScreen").classList.remove("hidden");
-
- const name = answers.name || "Your Name";
- const contact = answers.contact || "Add your phone and email";
- const location = answers.location || "";
- const role = answers.role || "professional opportunity";
- const skills = answers.skills || "Add your key skills and strengths.";
- const education = answers.education || "Add your education and training.";
- const languages = answers.languages || "Add your languages.";
-
- const summary =
-  skills +
-  " Seeking an opportunity to contribute these skills and grow in a " +
-  role +
-  " role.";
-
- document.getElementById("cvOutput").innerHTML = `
-  <h1>${escapeHtml(name)}</h1>
-  <div class="contact">
-   ${escapeHtml(contact)}
-   ${location ? " · " + escapeHtml(location) : ""}
+    </div>
   </div>
 
-  <h2>Professional Summary</h2>
-  <p>${escapeHtml(summary)}</p>
+  <script>
+    const questions = [
+      {
+        key: "name",
+        title: "About you",
+        text: "What is your full name?",
+        type: "input"
+      },
+      {
+        key: "contact",
+        title: "Contact details",
+        text: "What phone number and professional email should employers use?",
+        type: "input"
+      },
+      {
+        key: "location",
+        title: "Location",
+        text: "Which city and country do you live in?",
+        type: "input"
+      },
+      {
+        key: "role",
+        title: "Target job",
+        text: "What job title are you applying for?",
+        type: "input"
+      },
+      {
+        key: "skills",
+        title: "Your strengths",
+        text: "What are you good at? Mention tasks, tools, software, subjects, or strengths.",
+        type: "textarea"
+      },
+      {
+        key: "experience",
+        title: "Experience",
+        text: "Tell us about work, informal work, volunteering, family-business work, freelance work, or projects.",
+        type: "textarea"
+      },
+      {
+        key: "achievement",
+        title: "Proof of ability",
+        text: "Describe one problem you solved or task you completed successfully.",
+        type: "textarea"
+      },
+      {
+        key: "education",
+        title: "Education and training",
+        text: "What did you study? Include courses, licences, apprenticeships, or training.",
+        type: "textarea"
+      },
+      {
+        key: "languages",
+        title: "Languages",
+        text: "Which languages can you use?",
+        type: "input"
+      }
+    ];
 
-  <h2>Core Skills</h2>
-  <p>${escapeHtml(skills)}</p>
+    let current = 0;
+    const answers = {};
 
-  <h2>Experience and Projects</h2>
-  <ul>
-   ${splitIntoBullets(answers.experience)}
-   ${splitIntoBullets(answers.achievement)}
-  </ul>
+    const questionArea = document.getElementById("questionArea");
+    const progressBar = document.getElementById("progressBar");
+    const nextButton = document.getElementById("nextButton");
+    const backButton = document.getElementById("backButton");
+    const formScreen = document.getElementById("formScreen");
+    const resultScreen = document.getElementById("resultScreen");
+    const cvOutput = document.getElementById("cvOutput");
 
-  <h2>Education and Training</h2>
-  <p>${escapeHtml(education)}</p>
+    function escapeHtml(value) {
+      return String(value || "").replace(/[&<>"']/g, function (char) {
+        const symbols = {
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          """: "&quot;",
+          "'": "&#039;"
+        };
 
-  <h2>Languages</h2>
-  <p>${escapeHtml(languages)}</p>
- `;
-}
+        return symbols[char];
+      });
+    }
 
-function startAgain(){
- currentQuestion = 0;
- answers = {};
- document.getElementById("resultScreen").classList.add("hidden");
- document.getElementById("formScreen").classList.remove("hidden");
- renderQuestion();
-}
+    function displayQuestion() {
+      const question = questions[current];
+      const savedAnswer = answers[question.key] || "";
 
-renderQuestion();
-</script>
+      const field = question.type === "textarea"
+        ? `<textarea id="answer">${escapeHtml(savedAnswer)}</textarea>`
+        : `<input id="answer" value="${escapeHtml(savedAnswer)}">`;
+
+      questionArea.innerHTML = `
+        <h2>${question.title}</h2>
+        <p>Question ${current + 1} of ${questions.length}</p>
+        <label for="answer">${question.text}</label>
+        ${field}
+      `;
+
+      progressBar.style.width =
+        ((current + 1) / questions.length * 100) + "%";
+
+      backButton.disabled = current === 0;
+
+      nextButton.textContent =
+        current === questions.length - 1
+          ? "Create my CV"
+          : "Next";
+    }
+
+    function saveAnswer() {
+      const answer = document.getElementById("answer");
+
+      if (answer) {
+        answers[questions[current].key] = answer.value.trim();
+      }
+    }
+
+    function nextQuestion() {
+      saveAnswer();
+
+      if (current < questions.length - 1) {
+        current++;
+        displayQuestion();
+      } else {
+        createCv();
+      }
+    }
+
+    function previousQuestion() {
+      saveAnswer();
+
+      if (current > 0) {
+        current--;
+        displayQuestion();
+      }
+    }
+
+    function makeBullets(text) {
+      if (!text) {
+        return "<li>No information added yet.</li>";
+      }
+
+      return text
+        .split(/[.!?
+]+/)
+        .map(item => item.trim())
+        .filter(item => item.length > 0)
+        .map(item => `<li>${escapeHtml(item)}</li>`)
+        .join("");
+    }
+
+    function createCv() {
+      const name = answers.name || "Your Name";
+      const contact = answers.contact || "Add phone and email";
+      const location = answers.location || "";
+      const role = answers.role || "professional opportunity";
+
+      formScreen.classList.add("hidden");
+      resultScreen.classList.remove("hidden");
+
+      cvOutput.innerHTML = `
+        <h1>${escapeHtml(name)}</h1>
+
+        <div class="contact">
+          ${escapeHtml(contact)}
+          ${location ? " · " + escapeHtml(location) : ""}
+        </div>
+
+        <h2>Professional Summary</h2>
+        <p>
+          ${escapeHtml(answers.skills || "Motivated applicant seeking a " + role + " opportunity.")}
+        </p>
+
+        <h2>Core Skills</h2>
+        <p>${escapeHtml(answers.skills || "Add your skills")}</p>
+
+        <h2>Experience and Projects</h2>
+        <ul>
+          ${makeBullets(answers.experience)}
+          ${makeBullets(answers.achievement)}
+        </ul>
+
+        <h2>Education and Training</h2>
+        <p>${escapeHtml(answers.education || "Add your education and training")}</p>
+
+        <h2>Languages</h2>
+        <p>${escapeHtml(answers.languages || "Add your languages")}</p>
+      `;
+    }
+
+    function restart() {
+      location.reload();
+    }
+
+    nextButton.addEventListener("click", nextQuestion);
+    backButton.addEventListener("click", previousQuestion);
+    document.getElementById("printButton").addEventListener("click", function () {
+      window.print();
+    });
+    document.getElementById("restartButton").addEventListener("click", restart);
+
+    displayQuestion();
+  </script>
 </body>
 </html>
