@@ -4,12 +4,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#155eef"><title>CVQuick - Build a Professional CV</title><style>
-
-/* =========================================================
-   CVQUICK DESIGN SYSTEM
-========================================================= */
-
+<meta name="theme-color" content="#155eef">
+<title>CVQuick - Build Your CV</title><style>
 :root {
   --blue: #155eef;
   --blue-dark: #123b7a;
@@ -20,7 +16,6 @@
   --soft-blue: #eef4ff;
   --danger: #b42318;
   --success: #027a48;
-  --white: #ffffff;
 }
 
 * {
@@ -35,31 +30,19 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--dark);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial, sans-serif;
   line-height: 1.5;
-}
-
-button,
-input,
-textarea,
-select {
-  font-family: inherit;
-}
-
-button {
-  touch-action: manipulation;
-  -webkit-tap-highlight-color: transparent;
 }
 
 .container {
   width: 100%;
-  max-width: 950px;
+  max-width: 850px;
   margin: 0 auto;
   padding: 18px;
 }
 
 .card {
-  background: var(--white);
+  background: white;
   padding: 30px;
   border-radius: 18px;
   box-shadow: 0 8px 30px #10182818;
@@ -82,15 +65,6 @@ h2 {
   line-height: 1.6;
 }
 
-.hidden {
-  display: none !important;
-}
-
-
-/* =========================================================
-   PROGRESS
-========================================================= */
-
 .progress {
   height: 9px;
   margin: 24px 0;
@@ -104,13 +78,8 @@ h2 {
   height: 100%;
   background: var(--blue);
   border-radius: 20px;
-  transition: width .3s ease;
+  transition: width 0.3s ease;
 }
-
-
-/* =========================================================
-   FORM
-========================================================= */
 
 label {
   display: block;
@@ -127,6 +96,7 @@ select {
   border-radius: 10px;
   background: #fff;
   color: var(--dark);
+  font: inherit;
   font-size: 16px;
 }
 
@@ -148,9 +118,56 @@ select:focus {
   background: var(--soft-blue);
   color: #174ea6;
   border-radius: 10px;
+  line-height: 1.5;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+button {
+  min-height: 48px;
+  border: 0;
+  border-radius: 10px;
+  padding: 13px 19px;
+  font: inherit;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.primary {
+  background: var(--blue);
+  color: white;
+}
+
+.secondary {
+  background: #e9eef5;
+  color: var(--dark);
+}
+
+.hidden {
+  display: none !important;
 }
 
 .small {
+  margin-top: 22px;
   color: var(--muted);
   font-size: 13px;
 }
@@ -169,91 +186,6 @@ select:focus {
   font-weight: bold;
 }
 
-
-/* =========================================================
-   BUTTONS
-========================================================= */
-
-.actions {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  margin-top: 24px;
-}
-
-button {
-  min-height: 48px;
-  border: 0;
-  border-radius: 10px;
-  padding: 13px 19px;
-  font-size: 15px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-button:active {
-  transform: scale(.98);
-}
-
-button:disabled {
-  opacity: .45;
-  cursor: not-allowed;
-  transform: none;
-}
-
-.primary {
-  background: var(--blue);
-  color: white;
-}
-
-.secondary {
-  background: #e9eef5;
-  color: var(--dark);
-}
-
-
-/* =========================================================
-   RESULT CONTROLS
-========================================================= */
-
-.builder-toolbar {
-  display: grid;
-  gap: 15px;
-  margin: 20px 0;
-  padding: 18px;
-  background: #f8fafc;
-  border: 1px solid #e4e7ec;
-  border-radius: 14px;
-}
-
-.toolbar-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.toolbar-row button {
-  flex: 1 1 150px;
-}
-
-.template-buttons {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-}
-
-.template-button {
-  background: white;
-  border: 2px solid var(--border);
-  color: var(--dark);
-}
-
-.template-button.active {
-  border-color: var(--blue);
-  background: var(--soft-blue);
-  color: var(--blue-dark);
-}
-
 .notice {
   margin-top: 18px;
   padding: 13px;
@@ -268,174 +200,32 @@ button:disabled {
   margin: 18px 0;
 }
 
-.result-actions button {
-  flex: 1 1 180px;
-}
-
-
-/* =========================================================
-   CV DOCUMENT
-========================================================= */
-
-.cv-wrapper {
-  margin-top: 25px;
-  overflow-x: auto;
-  padding: 5px;
-}
-
 .cv {
-  width: 100%;
-  max-width: 800px;
-  min-height: 1100px;
-  margin: 0 auto;
-  padding: 55px;
-  background: white;
-  color: #202938;
-  box-shadow: 0 5px 25px #10182820;
-  line-height: 1.55;
+  margin-top: 30px;
+  line-height: 1.6;
   overflow-wrap: anywhere;
 }
 
 .cv h1 {
-  margin: 0;
+  color: var(--blue-dark);
   font-size: 36px;
-  color: #172033;
 }
 
 .cv h2 {
-  margin: 27px 0 9px;
+  margin-top: 26px;
   padding-bottom: 5px;
-  border-bottom: 2px solid #172033;
-  color: #172033;
+  border-bottom: 2px solid var(--blue-dark);
+  color: var(--blue-dark);
   font-size: 17px;
-  text-transform: uppercase;
-  letter-spacing: .5px;
 }
 
-.cv h3 {
-  margin-bottom: 3px;
-}
-
-.cv p {
-  margin-top: 6px;
-}
-
-.cv ul {
-  padding-left: 22px;
+.contact {
+  color: #555;
 }
 
 .cv li {
-  margin-bottom: 7px;
+  margin-bottom: 8px;
 }
-
-.cv-header {
-  margin-bottom: 25px;
-}
-
-.cv-contact {
-  margin-top: 8px;
-  color: #555;
-  font-size: 14px;
-}
-
-.cv-role {
-  margin-top: 5px;
-  color: #667085;
-  font-size: 18px;
-  font-weight: bold;
-}
-
-.cv-job-match {
-  margin-top: 15px;
-  padding: 10px 12px;
-  background: #eef4ff;
-  border-radius: 7px;
-  font-size: 13px;
-  color: #174ea6;
-}
-
-.skill-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 7px;
-  padding: 0 !important;
-  list-style: none;
-}
-
-.skill-list li {
-  padding: 5px 9px;
-  margin: 0;
-  background: #eef2f6;
-  border-radius: 5px;
-  font-size: 13px;
-}
-
-
-/* =========================================================
-   TEMPLATE 1 - MODERN
-========================================================= */
-
-.cv.template-modern .cv-header {
-  border-left: 6px solid var(--blue);
-  padding-left: 18px;
-}
-
-.cv.template-modern .cv-contact {
-  color: #475467;
-}
-
-
-/* =========================================================
-   TEMPLATE 2 - CLASSIC
-========================================================= */
-
-.cv.template-classic {
-  font-family: Georgia, "Times New Roman", serif;
-}
-
-.cv.template-classic h1 {
-  text-align: center;
-  font-family: Arial, sans-serif;
-  letter-spacing: 1px;
-}
-
-.cv.template-classic .cv-role,
-.cv.template-classic .cv-contact {
-  text-align: center;
-}
-
-.cv.template-classic h2 {
-  text-align: center;
-  border-bottom: 1px solid #333;
-}
-
-
-/* =========================================================
-   TEMPLATE 3 - SIMPLE
-========================================================= */
-
-.cv.template-simple {
-  font-family: Arial, sans-serif;
-}
-
-.cv.template-simple h1 {
-  font-size: 34px;
-}
-
-.cv.template-simple h2 {
-  color: var(--blue-dark);
-  border-bottom: 1px solid #d0d5dd;
-}
-
-.cv.template-simple .cv-header {
-  border-bottom: 3px solid var(--blue);
-  padding-bottom: 18px;
-}
-
-
-/* =========================================================
-   FEEDBACK
-========================================================= */
 
 .feedback {
   margin-top: 36px;
@@ -447,10 +237,15 @@ button:disabled {
   color: var(--blue-dark);
 }
 
+.feedback label {
+  margin-top: 14px;
+}
+
 .checkbox-row {
   display: flex;
   align-items: flex-start;
   gap: 10px;
+  margin-top: 15px;
   color: var(--muted);
   font-size: 14px;
 }
@@ -458,16 +253,11 @@ button:disabled {
 .checkbox-row input {
   width: auto;
   min-width: 18px;
+  min-height: 18px;
   margin-top: 3px;
 }
 
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
 @media (max-width: 600px) {
-
   .container {
     padding: 10px;
   }
@@ -484,7 +274,7 @@ button:disabled {
   .actions {
     position: sticky;
     bottom: 0;
-    z-index: 20;
+    z-index: 5;
     margin-right: -16px;
     margin-left: -16px;
     padding: 12px 16px;
@@ -496,39 +286,23 @@ button:disabled {
     width: 50%;
   }
 
-  .template-buttons {
-    grid-template-columns: 1fr;
-  }
-
-  .cv {
-    min-width: 0;
-    padding: 30px 24px;
-    box-shadow: none;
+  .result-actions button {
+    flex: 1 1 100%;
   }
 
   .cv h1 {
     font-size: 30px;
   }
-
-  .cv h2 {
-    font-size: 15px;
-  }
-
 }
 
-
-/* =========================================================
-   PRINT
-========================================================= */
-
 @media print {
-
   body {
     background: white;
   }
 
   .container {
     max-width: none;
+    margin: 0;
     padding: 0;
   }
 
@@ -537,180 +311,200 @@ button:disabled {
     box-shadow: none;
   }
 
-  .no-print,
-  #resultScreen > h1,
-  #resultScreen > .subtitle {
+  .no-print {
     display: none !important;
   }
 
-  .cv-wrapper {
-    margin: 0;
-    padding: 0;
-  }
-
   .cv {
-    max-width: none;
-    width: 100%;
-    min-height: auto;
-    padding: 0;
-    box-shadow: none;
+    margin-top: 0;
   }
-
 }
+</style></head><body><main class="container">
+  <div class="card"><!-- FORM -->
+<section id="formScreen">
 
-</style></head><body><main class="container"><div class="card"><!-- =====================================================
-     FORM SCREEN
-===================================================== --><section id="formScreen"><h1>CVQuick</h1><p class="subtitle">
-Answer simple questions in your own words and CVQuick will
-turn your information into a professional CV.
-</p><div class="progress">
-<div id="progressBar" class="progress-bar"></div>
-</div><div id="questionArea"></div><div
-id="errorMessage"
-class="error"
-role="alert"
-aria-live="polite">
-</div><div class="actions"><button
-id="backButton"
-class="secondary"
-type="button">
-Back
-</button>
+  <h1>CVQuick</h1>
 
-<button
-id="nextButton"
-class="primary"
-type="button">
-Next
-</button>
+  <p class="subtitle">
+    Answer simple questions in your own words and create a professional CV.
+    You do not need formal work experience to use this app.
+  </p>
 
-</div><p class="small">
-Your answers are saved only in this browser.
-Do not enter passwords, identity numbers, or other unnecessary
-sensitive information.
-</p></section><!-- =====================================================
-     RESULT SCREEN
-===================================================== --><section id="resultScreen" class="hidden"><div class="no-print"><h1>Your professional CV</h1><p class="subtitle">
-Choose a template, review your CV and then print or save it
-as a PDF.
-</p><div class="builder-toolbar"><strong>Choose your CV style</strong>
+  <div class="progress" aria-label="CV completion progress">
+    <div id="progressBar" class="progress-bar"></div>
+  </div>
 
-<div class="template-buttons"><button
-type="button"
-class="template-button active"
-data-template="modern">
-Modern
-</button>
+  <div id="questionArea"></div>
 
-<button
-type="button"
-class="template-button"
-data-template="classic">
-Classic
-</button>
+  <div
+    id="errorMessage"
+    class="error"
+    role="alert"
+    aria-live="polite">
+  </div>
 
-<button
-type="button"
-class="template-button"
-data-template="simple">
-Simple
-</button>
+  <div class="actions">
+    <button
+      id="backButton"
+      class="secondary"
+      type="button">
+      Back
+    </button>
 
-</div></div><div class="result-actions"><button
-id="printButton"
-class="primary"
-type="button">
-Print / Save as PDF
-</button>
+    <button
+      id="nextButton"
+      class="primary"
+      type="button">
+      Next
+    </button>
+  </div>
 
-<button
-id="editButton"
-class="secondary"
-type="button">
-Edit my answers
-</button>
+  <p class="small">
+    Your answers are saved only in this browser. Do not enter passwords,
+    identity numbers, or other unnecessary sensitive information.
+  </p>
 
-<button
-id="startAgainButton"
-class="secondary"
-type="button">
-Start again
-</button>
+</section>
 
-</div><div class="notice"><strong>Before applying:</strong>
-Check your name, phone number, email, dates,
-qualifications and experience. Never submit information
-that is false.
 
-</div></div><div class="cv-wrapper"><div
-id="cvOutput"
-class="cv template-modern">
-</div></div><!-- =====================================================
-     FEEDBACK
-===================================================== --><section class="feedback no-print"><h2>Help us improve CVQuick</h2><p class="subtitle">
-Your feedback helps us make CVQuick easier to use.
-</p><form
-id="feedbackForm"
-action="https://formspree.io/f/myegwgnq"
-method="POST"><label for="feedbackRating">
-How easy was CVQuick to use?
-</label><select
-id="feedbackRating"
-name="rating"
-required>
+<!-- RESULT -->
+<section id="resultScreen" class="hidden">
 
-<option value="">
-Choose one
-</option><option value="Very easy">
-Very easy
-</option><option value="Easy">
-Easy
-</option><option value="Okay">
-Okay
-</option><option value="Difficult">
-Difficult
-</option><option value="Very difficult">
-Very difficult
-</option></select><label for="feedbackMessage">
-What should we improve?
-</label><textarea
-id="feedbackMessage"
-name="message"
-placeholder="Tell us what worked or what was confusing."
-required>
-</textarea><label for="feedbackEmail">
-Email address, optional
-</label><input
-id="feedbackEmail"
-name="email"
-type="email"
-placeholder="you@example.com"
-autocomplete="email">
+  <div class="no-print">
 
-<input
-type="hidden"
-name="source"
-value="CVQuick website">
+    <h1>Your CV draft</h1>
 
-<label class="checkbox-row"><input
-type="checkbox"
-name="permission"
-value="Yes">
+    <p class="subtitle">
+      Review every sentence and correct anything that is not accurate.
+    </p>
 
-<span>
-You may contact me about this feedback.
-</span></label><button
-class="primary"
-type="submit">
-Send feedback
-</button>
+    <div class="result-actions">
 
-<div
-id="feedbackStatus"
-role="status"
-aria-live="polite">
-</div></form></section></section></div></main><script>
+      <button
+        id="printButton"
+        class="primary"
+        type="button">
+        Print / Save as PDF
+      </button>
 
+      <button
+        id="startAgainButton"
+        class="secondary"
+        type="button">
+        Start again
+      </button>
+
+    </div>
+
+    <div class="notice">
+      Never submit information that is false. Check your dates, contact
+      details, qualifications, and work experience before applying.
+    </div>
+
+  </div>
+
+
+  <div id="cvOutput" class="cv"></div>
+
+
+  <!-- FEEDBACK -->
+  <section class="feedback no-print">
+
+    <h2>Help us improve CVQuick</h2>
+
+    <p class="subtitle">
+      Your feedback helps us make the app easier to use.
+    </p>
+
+    <form
+      id="feedbackForm"
+      action="https://formspree.io/f/myegwgnq"
+      method="POST">
+
+      <label for="feedbackRating">
+        How easy was CVQuick to use?
+      </label>
+
+      <select
+        id="feedbackRating"
+        name="rating"
+        required>
+
+        <option value="">Choose one</option>
+        <option value="Very easy">Very easy</option>
+        <option value="Easy">Easy</option>
+        <option value="Okay">Okay</option>
+        <option value="Difficult">Difficult</option>
+        <option value="Very difficult">
+          Very difficult
+        </option>
+
+      </select>
+
+
+      <label for="feedbackMessage">
+        What should we improve?
+      </label>
+
+      <textarea
+        id="feedbackMessage"
+        name="message"
+        placeholder="Tell us what worked or what was confusing."
+        required></textarea>
+
+
+      <label for="feedbackEmail">
+        Email address, optional
+      </label>
+
+      <input
+        id="feedbackEmail"
+        name="email"
+        type="email"
+        placeholder="you@example.com"
+        autocomplete="email">
+
+
+      <input
+        type="hidden"
+        name="source"
+        value="CVQuick website">
+
+
+      <label class="checkbox-row">
+
+        <input
+          type="checkbox"
+          name="permission"
+          value="Yes">
+
+        <span>
+          You may contact me about this feedback.
+        </span>
+
+      </label>
+
+
+      <button
+        class="primary"
+        type="submit">
+        Send feedback
+      </button>
+
+      <div
+        id="feedbackStatus"
+        role="status"
+        aria-live="polite">
+      </div>
+
+    </form>
+
+  </section>
+
+</section>
+
+  </div>
+</main><script>
 "use strict";
 
 
@@ -720,218 +514,217 @@ aria-live="polite">
 
 const questions = [
 
-{
-key: "name",
-title: "About you",
-question: "What is your full name?",
-type: "input",
-required: true
-},
+  {
+    key: "name",
+    title: "About you",
+    question: "What is your full name?",
+    type: "input",
+    required: true
+  },
 
-{
-key: "contact",
-title: "Contact details",
-question:
-"What phone number and professional email should employers use?",
-type: "input",
-required: true
-},
+  {
+    key: "contact",
+    title: "Contact details",
+    question:
+      "What phone number and professional email should employers use?",
+    type: "input",
+    required: true
+  },
 
-{
-key: "location",
-title: "Location",
-question:
-"Which city and country do you live in?",
-type: "input",
-required: true
-},
+  {
+    key: "location",
+    title: "Location",
+    question:
+      "Which city and country do you live in?",
+    type: "input",
+    required: true
+  },
 
-{
-key: "role",
-title: "Target job",
-question:
-"What job title are you applying for?",
-type: "input",
-required: true
-},
+  {
+    key: "role",
+    title: "Target job",
+    question:
+      "What job title are you applying for?",
+    type: "input",
+    required: true
+  },
 
-{
-key: "skills",
-title: "Your strengths",
-question:
-"What are you good at? Mention tasks, tools, software, subjects, or personal strengths.",
-type: "textarea",
-required: true,
-example:
-"Example: Customer service, Excel, stock control, repairs, sales, administration, teamwork."
-},
+  {
+    key: "skills",
+    title: "Your strengths",
+    question:
+      "What are you good at? Mention tasks, tools, software, subjects, or personal strengths.",
+    type: "textarea",
+    required: true,
+    example:
+      "Example: I can use Excel, help customers, repair equipment, organise stock, explain technical topics, or work well in a team."
+  },
 
-{
-key: "experience",
-title: "Experience",
-question:
-"Tell us about your work, informal work, volunteering, freelance work, family-business work or practical projects.",
-type: "textarea",
-required: false,
-example:
-"Example: Worked in a family shop, helped customers, handled stock and processed sales."
-},
+  {
+    key: "experience",
+    title: "Experience",
+    question:
+      "Tell us about work, informal work, volunteering, family-business work, freelance work, or practical projects.",
+    type: "textarea",
+    required: false,
+    example:
+      "You can include helping in a shop, repairing things, caring for people, selling products, school projects, or community work."
+  },
 
-{
-key: "achievement",
-title: "Achievements",
-question:
-"Describe something you successfully achieved or a problem you solved.",
-type: "textarea",
-required: false,
-example:
-"Example: Organised stock and created a simple system that made products easier to find."
-},
+  {
+    key: "achievement",
+    title: "Proof of ability",
+    question:
+      "Describe one problem you solved or task you completed successfully. What did you personally do?",
+    type: "textarea",
+    required: false,
+    example:
+      "Example: I organised stock, found missing items, and created a simple list that made it easier to find products."
+  },
 
-{
-key: "education",
-title: "Education and training",
-question:
-"What did you study, where did you study and when? Include courses, licences, apprenticeships or training.",
-type: "textarea",
-required: false
-},
+  {
+    key: "education",
+    title: "Education and training",
+    question:
+      "What did you study, where did you study, and when? Include courses, licences, apprenticeships, or training.",
+    type: "textarea",
+    required: false
+  },
 
-{
-key: "languages",
-title: "Languages",
-question:
-"Which languages can you speak, read or write?",
-type: "input",
-required: false
-},
+  {
+    key: "languages",
+    title: "Languages",
+    question:
+      "Which languages can you speak, read, or write?",
+    type: "input",
+    required: false
+  },
 
-{
-key: "job",
-title: "Target job advert",
-question:
-"Paste the job advert here if you want CVQuick to identify relevant keywords for your CV.",
-type: "textarea",
-required: false,
-example:
-"Paste the job description here. CVQuick will look for important words and highlight relevant skills."
-}
+  {
+    key: "job",
+    title: "Job advert",
+    question:
+      "Paste the job advert here if you want your CV tailored to that job. You may leave this blank.",
+    type: "textarea",
+    required: false
+  }
 
 ];
 
 
 /* =========================================================
-   STATE
+   APP STATE
 ========================================================= */
 
 let currentQuestion = 0;
-
 let answers = loadAnswers();
-
-let selectedTemplate =
-localStorage.getItem("cvquickTemplate") || "modern";
 
 
 /* =========================================================
-   ELEMENTS
+   DOM ELEMENTS
 ========================================================= */
 
 const formScreen =
-document.getElementById("formScreen");
+  document.getElementById("formScreen");
 
 const resultScreen =
-document.getElementById("resultScreen");
+  document.getElementById("resultScreen");
 
 const questionArea =
-document.getElementById("questionArea");
+  document.getElementById("questionArea");
 
 const progressBar =
-document.getElementById("progressBar");
+  document.getElementById("progressBar");
 
 const backButton =
-document.getElementById("backButton");
+  document.getElementById("backButton");
 
 const nextButton =
-document.getElementById("nextButton");
+  document.getElementById("nextButton");
 
 const errorMessage =
-document.getElementById("errorMessage");
+  document.getElementById("errorMessage");
 
 const cvOutput =
-document.getElementById("cvOutput");
+  document.getElementById("cvOutput");
 
 const feedbackForm =
-document.getElementById("feedbackForm");
+  document.getElementById("feedbackForm");
 
 const feedbackStatus =
-document.getElementById("feedbackStatus");
+  document.getElementById("feedbackStatus");
 
 
 /* =========================================================
-   ESCAPE HTML
+   HTML SECURITY
 ========================================================= */
 
 function escapeHtml(value) {
 
-return String(value || "")
-.replace(/[&<>"']/g, function(character) {
+  return String(value || "")
+    .replace(/[&<>"']/g, function(character) {
 
-const entities = {
-"&": "&amp;",
-"<": "&lt;",
-">": "&gt;",
-'"': "&quot;",
-"'": "&#039;"
-};
+      const entities = {
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#039;"
+      };
 
-return entities[character];
+      return entities[character];
 
-});
+    });
 
 }
 
 
 /* =========================================================
-   STORAGE
+   LOCAL STORAGE
 ========================================================= */
 
 function loadAnswers() {
 
-try {
+  try {
 
-const saved =
-localStorage.getItem("cvquickAnswers");
+    const saved =
+      localStorage.getItem("cvquickAnswers");
 
-return saved
-? JSON.parse(saved)
-: {};
+    return saved
+      ? JSON.parse(saved)
+      : {};
 
-} catch (error) {
+  } catch (error) {
 
-return {};
+    console.warn(
+      "CVQuick storage unavailable:",
+      error
+    );
 
-}
+    return {};
+
+  }
 
 }
 
 
 function saveAnswers() {
 
-try {
+  try {
 
-localStorage.setItem(
-"cvquickAnswers",
-JSON.stringify(answers)
-);
+    localStorage.setItem(
+      "cvquickAnswers",
+      JSON.stringify(answers)
+    );
 
-} catch (error) {
+  } catch (error) {
 
-console.warn(
-"CVQuick could not save answers.",
-error
-);
+    console.warn(
+      "Could not save CVQuick answers:",
+      error
+    );
 
-}
+  }
 
 }
 
@@ -942,40 +735,53 @@ error
 
 function renderQuestion() {
 
-const item =
-questions[currentQuestion];
+  const item =
+    questions[currentQuestion];
 
-const saved =
-answers[item.key] || "";
-
-
-let input;
+  const saved =
+    answers[item.key] || "";
 
 
-if (item.type === "textarea") {
+  let input;
 
-input = `
-<textarea
-id="answerInput"
-autocomplete="off"
->${escapeHtml(saved)}</textarea>`;
+
+  if (item.type === "textarea") {
+
+    input = `
+      <textarea
+        id="answerInput"
+        autocomplete="off"
+        aria-label="${escapeHtml(item.question)}"
+      >${escapeHtml(saved)}</textarea>`;
 
 } else {
 
-input = "<input id="answerInput" type="text" autocomplete="on" value="${escapeHtml(saved)}">";
+input = `
+  <input
+    id="answerInput"
+    type="text"
+    autocomplete="on"
+    value="${escapeHtml(saved)}"
+    aria-label="${escapeHtml(item.question)}"
+  >
+`;
 
 }
 
 let html = `
 
-<h2>
-${escapeHtml(item.title)}
-</h2><p>
-Question ${currentQuestion + 1}
-of ${questions.length}
-</p><label for="answerInput">
-${escapeHtml(item.question)}
-</label>${input}
+<h2>${escapeHtml(item.title)}</h2>
+
+<p>
+  Question ${currentQuestion + 1}
+  of ${questions.length}
+</p>
+
+<label for="answerInput">
+  ${escapeHtml(item.question)}
+</label>
+
+${input}
 
 `;
 
@@ -983,21 +789,26 @@ if (item.example) {
 
 html += `
 
-<div class="example"><strong>Helpful example:</strong><br>
+  <div class="example">
 
-${escapeHtml(item.example)}
+    <strong>Helpful example:</strong><br>
 
-</div>`;
+    ${escapeHtml(item.example)}
+
+  </div>
+
+`;
 
 }
 
 questionArea.innerHTML = html;
 
-progressBar.style.width =
-(
+const percentage =
 ((currentQuestion + 1) /
-questions.length) * 100
-) + "%";
+questions.length) * 100;
+
+progressBar.style.width =
+percentage + "%";
 
 backButton.disabled =
 currentQuestion === 0;
@@ -1014,27 +825,34 @@ document.getElementById("answerInput");
 
 if (answerInput) {
 
+/*
+  Do NOT autofocus on mobile.
+  Autofocus can unexpectedly open the keyboard.
+*/
+
 if (window.innerWidth > 600) {
-answerInput.focus();
+  answerInput.focus();
 }
+
 
 answerInput.addEventListener(
-"keydown",
-function(event) {
+  "keydown",
+  function(event) {
 
-if (
-event.key === "Enter" &&
-!event.shiftKey &&
-item.type !== "textarea"
-) {
+    if (
+      event.key === "Enter" &&
+      !event.shiftKey &&
+      item.type !== "textarea"
+    ) {
 
-event.preventDefault();
+      event.preventDefault();
 
-goNext();
+      goNext();
 
-}
+    }
 
-});
+  }
+);
 
 }
 
@@ -1062,7 +880,7 @@ saveAnswers();
 }
 
 /* =========================================================
-VALIDATE
+VALIDATION
 ========================================================= */
 
 function validateCurrentAnswer() {
@@ -1076,21 +894,24 @@ answers[item.key] || "";
 if (item.required && !value) {
 
 errorMessage.textContent =
-"Please answer this question before continuing.";
+  "Please answer this question before continuing.";
+
 
 const input =
-document.getElementById("answerInput");
+  document.getElementById("answerInput");
+
 
 if (input) {
 
-input.focus();
+  input.focus();
 
-input.scrollIntoView({
-behavior: "smooth",
-block: "center"
-});
+  input.scrollIntoView({
+    behavior: "smooth",
+    block: "center"
+  });
 
 }
+
 
 return false;
 
@@ -1124,8 +945,8 @@ currentQuestion++;
 renderQuestion();
 
 window.scrollTo({
-top: 0,
-behavior: "smooth"
+  top: 0,
+  behavior: "smooth"
 });
 
 } else {
@@ -1151,8 +972,8 @@ currentQuestion--;
 renderQuestion();
 
 window.scrollTo({
-top: 0,
-behavior: "smooth"
+  top: 0,
+  behavior: "smooth"
 });
 
 }
@@ -1160,243 +981,60 @@ behavior: "smooth"
 }
 
 /* =========================================================
-SPLIT TEXT INTO SENTENCES
+BULLET GENERATOR
 ========================================================= */
 
-function splitSentences(text) {
+function splitIntoBullets(text) {
 
 if (!text || !text.trim()) {
-return [];
+
+return `
+  <li>
+    Add relevant experience or projects.
+  </li>
+`;
+
 }
 
 return text
-.split(/[.!?]+/)
-.map(function(part) {
-
-return part
-.trim()
-.replace(/^[-•]\s*/, "");
-
-})
-.filter(Boolean);
-
-}
-
-/* =========================================================
-BULLETS
-========================================================= */
-
-function makeBullets(text, fallback) {
-
-const parts =
-splitSentences(text);
-
-if (!parts.length) {
-
-return `
-
-<li>${escapeHtml(fallback)}</li>
-`;}
-
-return parts
-.map(function(part) {
-
-return `
-
-<li>${escapeHtml(part)}</li>
-`;})
-.join("");
-
-}
-
-/* =========================================================
-SKILL EXTRACTION
-========================================================= */
-
-function extractSkills(text) {
-
-if (!text) {
-return [];
-}
 
 /*
-Convert commas, semicolons and line breaks
-into separate skills.
+  FIXED:
+  The original code had a broken regex containing
+  an actual line break.
 */
 
-const skills =
-text
-.split(/[,;\n]+/)
-.map(function(skill) {
+.split(/[.!?]+/)
 
-return skill
-.trim()
-.replace(/^[-•]\s*/, "");
+.map(function(part) {
+
+  return part.trim();
 
 })
-.filter(Boolean);
 
-return [...new Set(skills)].slice(0, 16);
+.filter(Boolean)
 
-}
+.map(function(part) {
 
-/* =========================================================
-JOB KEYWORD MATCHING
-========================================================= */
+  /*
+    FIXED:
+    Original was /^[-•]s*/
+    Correct version is /^[-•]\s*/
+  */
 
-function getJobKeywords(jobText) {
+  const cleanPart =
+    part.replace(/^[-•]\s*/, "");
 
-if (!jobText) {
-return [];
-}
 
-const commonWords = new Set([
-
-"the",
-"and",
-"for",
-"with",
-"from",
-"that",
-"this",
-"your",
-"you",
-"are",
-"our",
-"will",
-"have",
-"has",
-"job",
-"work",
-"working",
-"role",
-"company",
-"team",
-"about",
-"into",
-"their",
-"they",
-"must",
-"should",
-"can",
-"ability",
-"looking",
-"required",
-"requirements",
-"experience",
-"years"
-
-]);
-
-const words =
-jobText
-.toLowerCase()
-.replace(/[^a-z0-9\s]/g, " ")
-.split(/\s+/)
-.filter(function(word) {
-
-return (
-word.length >= 4 &&
-!commonWords.has(word)
-);
-
-});
-
-const frequency = {};
-
-words.forEach(function(word) {
-
-frequency[word] =
-(frequency[word] || 0) + 1;
-
-});
-
-return Object.keys(frequency)
-.sort(function(a, b) {
-
-return frequency[b] -
-frequency[a];
+  return `
+    <li>
+      ${escapeHtml(cleanPart)}
+    </li>
+  `;
 
 })
-.slice(0, 12);
 
-}
-
-/* =========================================================
-FIND MATCHING SKILLS
-========================================================= */
-
-function getMatchingKeywords() {
-
-const job =
-answers.job || "";
-
-if (!job) {
-return [];
-}
-
-const keywords =
-getJobKeywords(job);
-
-const allText =
-(
-answers.skills + " " +
-answers.experience + " " +
-answers.education + " " +
-answers.achievement
-).toLowerCase();
-
-return keywords.filter(function(keyword) {
-
-return allText.includes(keyword);
-
-});
-
-}
-
-/* =========================================================
-SUMMARY GENERATOR
-========================================================= */
-
-function generateSummary() {
-
-const role =
-answers.role ||
-"professional opportunity";
-
-const skills =
-answers.skills ||
-"strong practical and interpersonal skills";
-
-const experience =
-answers.experience;
-
-const hasExperience =
-experience &&
-experience.trim().length > 0;
-
-let summary =
-"Motivated candidate seeking a " +
-role +
-" position, with strengths in " +
-skills +
-".";
-
-if (hasExperience) {
-
-summary +=
-" Brings practical experience and a willingness " +
-"to contribute, learn and grow within a professional environment.";
-
-} else {
-
-summary +=
-" Eager to contribute, learn quickly and develop " +
-"professionally while delivering reliable results.";
-
-}
-
-return summary;
+.join("");
 
 }
 
@@ -1409,243 +1047,121 @@ function createCV() {
 const name =
 answers.name || "Your Name";
 
-const role =
-answers.role ||
-"Professional Candidate";
-
 const contact =
 answers.contact ||
-"Add phone and email";
+"Add your phone and email";
 
 const location =
 answers.location || "";
 
+const role =
+answers.role ||
+"professional opportunity";
+
 const skills =
-extractSkills(answers.skills);
-
-const matches =
-getMatchingKeywords();
-
-const experience =
-answers.experience;
-
-const achievement =
-answers.achievement;
+answers.skills ||
+"Add your key skills and strengths.";
 
 const education =
-answers.education;
+answers.education ||
+"Add your education and training.";
 
 const languages =
-answers.languages;
+answers.languages ||
+"Add your languages.";
 
-let skillHtml;
-
-if (skills.length) {
-
-skillHtml =
-skills.map(function(skill) {
-
-return `
-
-<li>
-${escapeHtml(skill)}
-</li>
-`;}).join("");
-
-} else {
-
-skillHtml =
-"<li>Add your relevant skills.</li>";
-
-}
-
-let experienceHtml =
-makeBullets(
-experience,
-"Add your relevant work experience or practical projects."
-);
-
-let achievementHtml = "";
-
-if (achievement) {
-
-achievementHtml = `
-
-<h2>
-Achievements & Projects
-</h2><ul>${makeBullets(
-achievement,
-"Add an achievement or successful project."
-)}
-
-</ul>`;
-
-}
-
-let educationHtml = `
-
-<h2>
-Education & Training
-</h2><p>
-${escapeHtml(
-education ||
-"Add your education, qualifications or training."
-)}
-</p>`;
-
-let languageHtml = `
-
-<h2>
-Languages
-</h2><p>
-${escapeHtml(
-languages ||
-"Add your languages."
-)}
-</p>`;
-
-let matchHtml = "";
-
-if (matches.length) {
-
-matchHtml = `
-
-<div class="cv-job-match"><strong>
-Job advert match:
-</strong>Your information contains relevant keywords such as:
-
-${escapeHtml(
-matches.join(", ")
-)}
-
-</div>`;
-
-}
-
-cvOutput.className =
-"cv template-" +
-selectedTemplate;
-
-cvOutput.innerHTML = `
-
-<div class="cv-header"><h1>
-${escapeHtml(name)}
-</h1><div class="cv-role">
-${escapeHtml(role)}
-</div><div class="cv-contact">${escapeHtml(contact)}
-
-${location
-? " · " + escapeHtml(location)
-: ""}
-
-</div>${matchHtml}
-
-</div><h2>
-Professional Summary
-</h2><p>
-${escapeHtml(
-generateSummary()
-)}
-</p><h2>
-Key Skills
-</h2><ul class="skill-list">${skillHtml}
-
-</ul><h2>
-Experience
-</h2><ul>${experienceHtml}
-
-</ul>${achievementHtml}
-
-${educationHtml}
-
-${languageHtml}
-
-`;
+const summary =
+skills +
+" Seeking an opportunity to contribute these skills and grow in a " +
+role +
+" role.";
 
 formScreen.classList.add("hidden");
 
 resultScreen.classList.remove("hidden");
 
+cvOutput.innerHTML = `
+
+<h1>
+  ${escapeHtml(name)}
+</h1>
+
+
+<div class="contact">
+
+  ${escapeHtml(contact)}
+
+  ${
+    location
+      ? " · " + escapeHtml(location)
+      : ""
+  }
+
+</div>
+
+
+<h2>
+  Professional Summary
+</h2>
+
+<p>
+  ${escapeHtml(summary)}
+</p>
+
+
+<h2>
+  Core Skills
+</h2>
+
+<p>
+  ${escapeHtml(skills)}
+</p>
+
+
+<h2>
+  Experience and Projects
+</h2>
+
+<ul>
+
+  ${splitIntoBullets(answers.experience)}
+
+  ${splitIntoBullets(answers.achievement)}
+
+</ul>
+
+
+<h2>
+  Education and Training
+</h2>
+
+<p>
+  ${escapeHtml(education)}
+</p>
+
+
+<h2>
+  Languages
+</h2>
+
+<p>
+  ${escapeHtml(languages)}
+</p>
+
+`;
+
 window.scrollTo({
 top: 0,
 behavior: "smooth"
 });
 
 }
-
-/* =========================================================
-TEMPLATE SELECTOR
-========================================================= */
-
-document
-.querySelectorAll(".template-button")
-.forEach(function(button) {
-
-button.addEventListener(
-"click",
-function() {
-
-selectedTemplate =
-button.dataset.template;
-
-localStorage.setItem(
-"cvquickTemplate",
-selectedTemplate
-);
-
-document
-.querySelectorAll(".template-button")
-.forEach(function(btn) {
-
-btn.classList.remove("active");
-
-});
-
-button.classList.add("active");
-
-if (!resultScreen.classList.contains("hidden")) {
-createCV();
-}
-
-});
-
-});
-
-/* =========================================================
-EDIT ANSWERS
-========================================================= */
-
-document
-.getElementById("editButton")
-.addEventListener(
-"click",
-function() {
-
-resultScreen.classList.add("hidden");
-
-formScreen.classList.remove("hidden");
-
-currentQuestion =
-questions.length - 1;
-
-renderQuestion();
-
-window.scrollTo({
-top: 0,
-behavior: "smooth"
-});
-
-});
 
 /* =========================================================
 START AGAIN
 ========================================================= */
 
-document
-.getElementById("startAgainButton")
-.addEventListener(
-"click",
-function() {
+function startAgain() {
 
 if (
 !confirm(
@@ -1664,10 +1180,17 @@ answers = {};
 try {
 
 localStorage.removeItem(
-"cvquickAnswers"
+  "cvquickAnswers"
 );
 
-} catch (error) {}
+} catch (error) {
+
+console.warn(
+  "Could not clear CVQuick storage:",
+  error
+);
+
+}
 
 resultScreen.classList.add("hidden");
 
@@ -1680,7 +1203,7 @@ top: 0,
 behavior: "smooth"
 });
 
-});
+}
 
 /* =========================================================
 BUTTON EVENTS
@@ -1702,12 +1225,21 @@ document
 "click",
 function() {
 
-window.print();
+  window.print();
 
-});
+}
+
+);
+
+document
+.getElementById("startAgainButton")
+.addEventListener(
+"click",
+startAgain
+);
 
 /* =========================================================
-FEEDBACK
+FEEDBACK FORM
 ========================================================= */
 
 feedbackForm.addEventListener(
@@ -1716,91 +1248,79 @@ async function(event) {
 
 event.preventDefault();
 
+
 if (
-feedbackForm.action.includes(
-"PASTE_YOUR_FORMSPREE_ENDPOINT_HERE"
-)
+  feedbackForm.action.includes(
+    "PASTE_YOUR_FORMSPREE_ENDPOINT_HERE"
+  )
 ) {
 
-feedbackStatus.className =
-"error";
+  feedbackStatus.className =
+    "error";
 
-feedbackStatus.textContent =
-"Feedback is not connected yet. Add your Formspree endpoint first.";
+  feedbackStatus.textContent =
+    "Feedback is not connected yet. Add your Formspree endpoint first.";
 
-return;
+  return;
 
 }
+
 
 feedbackStatus.className = "";
 
 feedbackStatus.textContent =
-"Sending feedback...";
+  "Sending feedback...";
+
 
 try {
 
-const response =
-await fetch(
-feedbackForm.action,
-{
-method: "POST",
-body: new FormData(feedbackForm),
-headers: {
-Accept: "application/json"
-}
-}
-);
+  const response =
+    await fetch(
+      feedbackForm.action,
+      {
+        method: "POST",
+        body: new FormData(feedbackForm),
+        headers: {
+          Accept: "application/json"
+        }
+      }
+    );
 
-if (!response.ok) {
 
-throw new Error(
-"Feedback submission failed"
-);
+  if (response.ok) {
 
-}
+    feedbackForm.reset();
 
-feedbackForm.reset();
+    feedbackStatus.className =
+      "success";
 
-feedbackStatus.className =
-"success";
+    feedbackStatus.textContent =
+      "Thank you. Your feedback was sent.";
 
-feedbackStatus.textContent =
-"Thank you. Your feedback was sent.";
+  } else {
+
+    throw new Error(
+      "Feedback submission failed"
+    );
+
+  }
 
 } catch (error) {
 
-feedbackStatus.className =
-"error";
+  feedbackStatus.className =
+    "error";
 
-feedbackStatus.textContent =
-"The feedback could not be sent. Please try again later.";
+  feedbackStatus.textContent =
+    "The feedback could not be sent. Please try again later.";
 
 }
 
-});
+}
+);
 
 /* =========================================================
-INITIALISE
+START APP
 ========================================================= */
-
-document
-.querySelectorAll(".template-button")
-.forEach(function(button) {
-
-if (
-button.dataset.template ===
-selectedTemplate
-) {
-
-button.classList.add("active");
-
-} else {
-
-button.classList.remove("active");
-
-}
-
-});
 
 renderQuestion();
 
