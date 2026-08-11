@@ -1,675 +1,813 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="CVQuick helps people create professional CVs by answering simple questions.">
-  <title>CVQuick - Create Your CV</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#155eef">
+<title>CVQuick</title>
 
-  <style>
-    :root {
-      --blue: #155eef;
-      --dark-blue: #123b7a;
-      --dark: #172033;
-      --muted: #667085;
-      --background: #f3f6fb;
-      --border: #d0d5dd;
-      --light-blue: #eef4ff;
-      --light-grey: #e8edf5;
-      --success: #087443;
-    }
+<style>
+:root {
+  --blue: #155eef;
+  --blue-dark: #123b7a;
+  --dark: #172033;
+  --muted: #667085;
+  --bg: #f3f6fb;
+  --border: #d0d5dd;
+  --soft-blue: #eef4ff;
+  --danger: #b42318;
+  --success: #027a48;
+}
 
-    * {
-      box-sizing: border-box;
-    }
+* {
+  box-sizing: border-box;
+}
 
-    body {
-      margin: 0;
-      background: var(--background);
-      color: var(--dark);
-      font-family: Arial, Helvetica, sans-serif;
-      line-height: 1.5;
-    }
+html {
+  scroll-behavior: smooth;
+}
 
-    .container {
-      max-width: 850px;
-      margin: 30px auto;
-      padding: 18px;
-    }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--dark);
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+}
 
-    .card {
-      background: #ffffff;
-      padding: 30px;
-      border-radius: 18px;
-      box-shadow: 0 8px 30px rgba(16, 24, 40, 0.1);
-    }
+.container {
+  width: 100%;
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 18px;
+}
 
-    h1 {
-      margin: 0 0 8px;
-      color: var(--blue);
-      font-size: 34px;
-    }
+.card {
+  background: white;
+  padding: 30px;
+  border-radius: 18px;
+  box-shadow: 0 8px 30px #10182818;
+}
 
-    h2 {
-      margin-top: 0;
-      color: var(--dark);
-    }
+h1 {
+  margin: 0 0 8px;
+  color: var(--blue);
+  font-size: 32px;
+  line-height: 1.2;
+}
 
-    p {
-      margin-top: 8px;
-    }
+h2 {
+  margin-top: 0;
+  line-height: 1.3;
+}
 
-    .subtitle {
-      color: var(--muted);
-    }
+.subtitle {
+  color: var(--muted);
+  line-height: 1.6;
+}
 
-    .small {
-      color: var(--muted);
-      font-size: 13px;
-    }
+.progress {
+  height: 9px;
+  margin: 24px 0;
+  overflow: hidden;
+  background: #e4e7ec;
+  border-radius: 20px;
+}
 
-    .progress {
-      width: 100%;
-      height: 9px;
-      margin: 25px 0;
-      overflow: hidden;
-      background: #e4e7ec;
-      border-radius: 20px;
-    }
+.progress-bar {
+  width: 10%;
+  height: 100%;
+  background: var(--blue);
+  border-radius: 20px;
+  transition: width 0.3s ease;
+}
 
-    .progress-bar {
-      width: 10%;
-      height: 100%;
-      background: var(--blue);
-      border-radius: 20px;
-      transition: width 0.3s ease;
-    }
+label {
+  display: block;
+  margin: 18px 0 8px;
+  font-weight: bold;
+}
 
-    label {
-      display: block;
-      margin: 18px 0 8px;
-      font-weight: bold;
-    }
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--dark);
+  font: inherit;
+  font-size: 16px;
+}
 
-    input,
-    textarea {
-      width: 100%;
-      padding: 14px;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      background: white;
-      color: var(--dark);
-      font: inherit;
-      font-size: 16px;
-    }
+textarea {
+  min-height: 125px;
+  resize: vertical;
+}
 
-    textarea {
-      min-height: 125px;
-      resize: vertical;
-    }
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 3px solid #155eef33;
+  border-color: var(--blue);
+}
 
-    input:focus,
-    textarea:focus {
-      outline: 3px solid #c7d7fe;
-      border-color: var(--blue);
-    }
+.example {
+  margin-top: 16px;
+  padding: 14px;
+  background: var(--soft-blue);
+  color: #174ea6;
+  border-radius: 10px;
+  line-height: 1.5;
+}
 
-    .example {
-      margin-top: 16px;
-      padding: 14px;
-      background: var(--light-blue);
-      color: #174ea6;
-      border-radius: 10px;
-    }
+.actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 24px;
+}
 
-    .privacy-warning {
-      margin-top: 18px;
-      padding: 14px;
-      border-left: 4px solid #f5a400;
-      background: #fff8e6;
-      color: #694d00;
-    }
+button {
+  min-height: 48px;
+  border: 0;
+  border-radius: 10px;
+  padding: 13px 19px;
+  font: inherit;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
 
-    .actions {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      margin-top: 25px;
-    }
+button:active {
+  transform: scale(0.98);
+}
 
-    button {
-      padding: 13px 19px;
-      border: 0;
-      border-radius: 10px;
-      font: inherit;
-      font-weight: bold;
-      cursor: pointer;
-    }
+button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
 
-    button:hover {
-      opacity: 0.9;
-    }
+.primary {
+  background: var(--blue);
+  color: white;
+}
 
-    button:disabled {
-      opacity: 0.45;
-      cursor: not-allowed;
-    }
+.secondary {
+  background: #e9eef5;
+  color: var(--dark);
+}
 
-    .primary {
-      background: var(--blue);
-      color: white;
-    }
+.hidden {
+  display: none !important;
+}
 
-    .secondary {
-      background: var(--light-grey);
-      color: var(--dark);
-    }
+.small {
+  margin-top: 22px;
+  color: var(--muted);
+  font-size: 13px;
+}
 
-    .success {
-      background: var(--success);
-      color: white;
-    }
+.error {
+  margin-top: 12px;
+  color: var(--danger);
+  font-size: 14px;
+  font-weight: bold;
+}
 
-    .hidden {
-      display: none !important;
-    }
+.success {
+  margin-top: 12px;
+  color: var(--success);
+  font-size: 14px;
+  font-weight: bold;
+}
 
-    .cv {
-      margin-top: 30px;
-      line-height: 1.5;
-    }
+.notice {
+  margin-top: 18px;
+  padding: 13px;
+  border-left: 4px solid #f5a400;
+  background: #fff8e6;
+}
 
-    .cv h1 {
-      color: var(--dark-blue);
-      font-size: 38px;
-    }
+.result-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 18px 0;
+}
 
-    .cv h2 {
-      margin-top: 27px;
-      padding-bottom: 5px;
-      border-bottom: 2px solid var(--dark-blue);
-      color: var(--dark-blue);
-      font-size: 18px;
-      text-transform: uppercase;
-    }
+.cv {
+  margin-top: 30px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
 
-    .contact {
-      color: #555;
-    }
+.cv h1 {
+  color: var(--blue-dark);
+  font-size: 36px;
+}
 
-    .cv li {
-      margin-bottom: 8px;
-    }
+.cv h2 {
+  margin-top: 26px;
+  padding-bottom: 5px;
+  border-bottom: 2px solid var(--blue-dark);
+  color: var(--blue-dark);
+  font-size: 17px;
+}
 
-    .feedback-box {
-      margin-top: 40px;
-      padding: 24px;
-      background: var(--light-blue);
-      border-radius: 14px;
-    }
+.contact {
+  color: #555;
+}
 
-    .feedback-box h2 {
-      margin-top: 0;
-      color: var(--dark-blue);
-      border: 0;
-      text-transform: none;
-    }
+.cv li {
+  margin-bottom: 8px;
+}
 
-    .feedback-status {
-      margin-top: 15px;
-      color: var(--success);
-      font-weight: bold;
-    }
+.feedback {
+  margin-top: 36px;
+  padding-top: 26px;
+  border-top: 1px solid #e4e7ec;
+}
 
-    .footer {
-      margin-top: 25px;
-      text-align: center;
-      color: var(--muted);
-      font-size: 13px;
-    }
+.feedback h2 {
+  color: var(--blue-dark);
+}
 
-    @media (max-width: 600px) {
-      .container {
-        margin: 0 auto;
-        padding: 10px;
-      }
+.feedback label {
+  margin-top: 14px;
+}
 
-      .card {
-        padding: 20px;
-        border-radius: 12px;
-      }
+.checkbox-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 15px;
+  color: var(--muted);
+  font-size: 14px;
+}
 
-      h1 {
-        font-size: 29px;
-      }
+.checkbox-row input {
+  width: auto;
+  min-width: 18px;
+  min-height: 18px;
+  margin-top: 3px;
+}
 
-      .actions {
-        flex-direction: column-reverse;
-      }
+@media (max-width: 600px) {
+  .container {
+    padding: 10px;
+  }
 
-      .actions button {
-        width: 100%;
-      }
-    }
+  .card {
+    padding: 20px 16px;
+    border-radius: 14px;
+  }
 
-    @media print {
-      body {
-        background: white;
-      }
+  h1 {
+    font-size: 28px;
+  }
 
-      .container {
-        max-width: none;
-        margin: 0;
-        padding: 0;
-      }
+  .actions {
+    position: sticky;
+    bottom: 0;
+    z-index: 5;
+    margin-right: -16px;
+    margin-left: -16px;
+    padding: 12px 16px;
+    background: #ffffffed;
+    box-shadow: 0 -4px 14px #10182818;
+  }
 
-      .card {
-        padding: 0;
-        box-shadow: none;
-      }
+  .actions button {
+    width: 50%;
+  }
 
-      .no-print {
-        display: none !important;
-      }
+  .result-actions button {
+    flex: 1 1 100%;
+  }
 
-      .cv {
-        margin-top: 0;
-      }
-    }
-  </style>
+  .cv h1 {
+    font-size: 30px;
+  }
+}
+
+@media print {
+  body {
+    background: white;
+  }
+
+  .container {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .card {
+    padding: 0;
+    box-shadow: none;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .cv {
+    margin-top: 0;
+  }
+}
+</style>
 </head>
 
 <body>
-  <main class="container">
-    <div class="card">
+<main class="container">
+  <div class="card">
 
-      <section id="formScreen">
-        <h1>CVQuick</h1>
+    <section id="formScreen">
+      <h1>CVQuick</h1>
+
+      <p class="subtitle">
+        Answer simple questions in your own words and create a professional CV.
+        You do not need formal work experience to use this app.
+      </p>
+
+      <div class="progress" aria-label="CV completion progress">
+        <div id="progressBar" class="progress-bar"></div>
+      </div>
+
+      <div id="questionArea"></div>
+      <div id="errorMessage" class="error" role="alert"></div>
+
+      <div class="actions">
+        <button id="backButton" class="secondary" type="button">Back</button>
+        <button id="nextButton" class="primary" type="button">Next</button>
+      </div>
+
+      <p class="small">
+        Your answers are saved only in this browser. Do not enter passwords,
+        identity numbers, or other unnecessary sensitive information.
+      </p>
+    </section>
+
+    <section id="resultScreen" class="hidden">
+      <div class="no-print">
+        <h1>Your CV draft</h1>
 
         <p class="subtitle">
-          Answer simple questions in your own words and create a professional CV.
-          You do not need formal work experience to use this app.
+          Review every sentence and correct anything that is not accurate.
         </p>
 
-        <div class="progress">
-          <div id="progressBar" class="progress-bar"></div>
-        </div>
-
-        <div id="questionArea"></div>
-
-        <div class="actions">
-          <button id="backButton" class="secondary" type="button">
-            Back
-          </button>
-
-          <button id="nextButton" class="primary" type="button">
-            Next
-          </button>
-        </div>
-
-        <div class="privacy-warning">
-          <strong>Privacy reminder:</strong>
-          Do not enter passwords, banking details, PINs, or identity numbers.
-        </div>
-
-        <p class="small">
-          Prototype version. Your answers stay in this browser while the page is open.
-        </p>
-      </section>
-
-      <section id="resultScreen" class="hidden">
-        <div class="no-print">
-          <h1>Your CV draft</h1>
-
-          <p class="subtitle">
-            Review every statement and correct anything that is incomplete or inaccurate.
-          </p>
-
+        <div class="result-actions">
           <button id="printButton" class="primary" type="button">
             Print / Save as PDF
           </button>
 
-          <button id="restartButton" class="secondary" type="button">
+          <button id="startAgainButton" class="secondary" type="button">
             Start again
           </button>
-
-          <div class="privacy-warning">
-            Check your name, email, phone number, dates, qualifications, and experience
-            before submitting this CV to an employer.
-          </div>
         </div>
 
-        <article id="cvOutput" class="cv"></article>
+        <div class="notice">
+          Never submit information that is false. Check your dates, contact
+          details, qualifications, and work experience before applying.
+        </div>
+      </div>
 
-        <section class="feedback-box no-print">
-          <h2>Help us improve CVQuick</h2>
+      <div id="cvOutput" class="cv"></div>
 
-          <p>
-            Tell us what you thought of the app. Your feedback helps improve
-            the questions and the CV design.
-          </p>
+      <section class="feedback no-print">
+        <h2>Help us improve CVQuick</h2>
 
-          <form
-            id="feedbackForm"
-            action="https://formspree.io/f/myegwgnq"
-            method="POST"
+        <p class="subtitle">
+          Your feedback helps us make the app easier to use.
+        </p>
+
+        <!-- Replace the action URL with your public Formspree endpoint. -->
+        <form
+          id="feedbackForm"
+          action="https://formspree.io/f/myegwgnq"
+          method="POST"
+        >
+          <label for="feedbackRating">How easy was CVQuick to use?</label>
+          <select id="feedbackRating" name="rating" required>
+            <option value="">Choose one</option>
+            <option value="Very easy">Very easy</option>
+            <option value="Easy">Easy</option>
+            <option value="Okay">Okay</option>
+            <option value="Difficult">Difficult</option>
+            <option value="Very difficult">Very difficult</option>
+          </select>
+
+          <label for="feedbackMessage">What should we improve?</label>
+          <textarea
+            id="feedbackMessage"
+            name="message"
+            placeholder="Tell us what worked or what was confusing."
+            required
+          ></textarea>
+
+          <label for="feedbackEmail">
+            Email address, optional
+          </label>
+          <input
+            id="feedbackEmail"
+            name="email"
+            type="email"
+            placeholder="you@example.com"
+            autocomplete="email"
           >
-            <label for="feedbackName">Your name (optional)</label>
-            <input
-              id="feedbackName"
-              name="name"
-              type="text"
-              autocomplete="name"
-            >
 
-            <label for="feedbackEmail">Your email (optional)</label>
-            <input
-              id="feedbackEmail"
-              name="email"
-              type="email"
-              autocomplete="email"
-            >
+          <input type="hidden" name="source" value="CVQuick website">
 
-            <label for="feedbackMessage">
-              What did you think of CVQuick?
-            </label>
+          <label class="checkbox-row">
+            <input type="checkbox" name="permission" value="Yes">
+            <span>You may contact me about this feedback.</span>
+          </label>
 
-            <textarea
-              id="feedbackMessage"
-              name="feedback"
-              required
-            ></textarea>
-
-            <input
-              type="hidden"
-              name="source"
-              value="CVQuick website"
-            >
-
-            <button class="success" type="submit">
-              Send feedback
-            </button>
-
-            <p class="small">
-              Please do not send a full CV, identity number, password,
-              banking details, or other sensitive information.
-            </p>
-
-            <p id="feedbackStatus" class="feedback-status"></p>
-          </form>
-        </section>
+          <button class="primary" type="submit">Send feedback</button>
+          <div id="feedbackStatus" role="status"></div>
+        </form>
       </section>
+    </section>
 
-      <footer class="footer">
-        CVQuick prototype created by Yameem-max
-      </footer>
+  </div>
+</main>
 
-    </div>
-  </main>
+<script>
+"use strict";
 
-  <script>
-    const questions = [
-      {
-        key: "name",
-        title: "About you",
-        text: "What is your full name?",
-        type: "input"
-      },
-      {
-        key: "contact",
-        title: "Contact details",
-        text: "What phone number and professional email should employers use?",
-        type: "input"
-      },
-      {
-        key: "location",
-        title: "Location",
-        text: "Which city and country do you live in?",
-        type: "input"
-      },
-      {
-        key: "role",
-        title: "Target job",
-        text: "What job title are you applying for?",
-        type: "input"
-      },
-      {
-        key: "skills",
-        title: "Your strengths",
-        text: "What are you good at? Mention tasks, tools, software, subjects, or personal strengths.",
-        type: "textarea",
-        example: "Example: I can use Excel, help customers, repair equipment, organise stock, explain technical topics, or work well in a team."
-      },
-      {
-        key: "experience",
-        title: "Experience",
-        text: "Tell us about work, informal work, volunteering, family-business work, freelance work, or practical projects.",
-        type: "textarea",
-        example: "You can include helping in a shop, repairing things, caring for people, selling products, school projects, or community work."
-      },
-      {
-        key: "achievement",
-        title: "Proof of ability",
-        text: "Describe one problem you solved or task you completed successfully. What did you personally do?",
-        type: "textarea",
-        example: "Example: I organised stock, found missing items, and created a simple list that made it easier to find products."
-      },
-      {
-        key: "education",
-        title: "Education and training",
-        text: "What did you study, where did you study, and when? Include courses, licences, apprenticeships, or training.",
-        type: "textarea"
-      },
-      {
-        key: "languages",
-        title: "Languages",
-        text: "Which languages can you speak, read, or write?",
-        type: "input"
-      },
-      {
-        key: "job",
-        title: "Job advert",
-        text: "Paste the job advert here if you want your CV tailored to that job. You may leave this blank.",
-        type: "textarea"
+const questions = [
+  {
+    key: "name",
+    title: "About you",
+    question: "What is your full name?",
+    type: "input",
+    required: true
+  },
+  {
+    key: "contact",
+    title: "Contact details",
+    question: "What phone number and professional email should employers use?",
+    type: "input",
+    required: true
+  },
+  {
+    key: "location",
+    title: "Location",
+    question: "Which city and country do you live in?",
+    type: "input",
+    required: true
+  },
+  {
+    key: "role",
+    title: "Target job",
+    question: "What job title are you applying for?",
+    type: "input",
+    required: true
+  },
+  {
+    key: "skills",
+    title: "Your strengths",
+    question: "What are you good at? Mention tasks, tools, software, subjects, or personal strengths.",
+    type: "textarea",
+    required: true,
+    example: "Example: I can use Excel, help customers, repair equipment, organise stock, explain technical topics, or work well in a team."
+  },
+  {
+    key: "experience",
+    title: "Experience",
+    question: "Tell us about work, informal work, volunteering, family-business work, freelance work, or practical projects.",
+    type: "textarea",
+    required: false,
+    example: "You can include helping in a shop, repairing things, caring for people, selling products, school projects, or community work."
+  },
+  {
+    key: "achievement",
+    title: "Proof of ability",
+    question: "Describe one problem you solved or task you completed successfully. What did you personally do?",
+    type: "textarea",
+    required: false,
+    example: "Example: I organised stock, found missing items, and created a simple list that made it easier to find products."
+  },
+  {
+    key: "education",
+    title: "Education and training",
+    question: "What did you study, where did you study, and when? Include courses, licences, apprenticeships, or training.",
+    type: "textarea",
+    required: false
+  },
+  {
+    key: "languages",
+    title: "Languages",
+    question: "Which languages can you speak, read, or write?",
+    type: "input",
+    required: false
+  },
+  {
+    key: "job",
+    title: "Job advert",
+    question: "Paste the job advert here if you want your CV tailored to that job. You may leave this blank.",
+    type: "textarea",
+    required: false
+  }
+];
+
+let currentQuestion = 0;
+let answers = loadAnswers();
+
+const formScreen = document.getElementById("formScreen");
+const resultScreen = document.getElementById("resultScreen");
+const questionArea = document.getElementById("questionArea");
+const progressBar = document.getElementById("progressBar");
+const backButton = document.getElementById("backButton");
+const nextButton = document.getElementById("nextButton");
+const errorMessage = document.getElementById("errorMessage");
+const cvOutput = document.getElementById("cvOutput");
+const feedbackForm = document.getElementById("feedbackForm");
+const feedbackStatus = document.getElementById("feedbackStatus");
+
+function escapeHtml(value) {
+  return String(value || "").replace(/[&<>"']/g, function(character) {
+    const entities = {
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#039;"
+    };
+
+    return entities[character];
+  });
+}
+
+function loadAnswers() {
+  try {
+    return JSON.parse(localStorage.getItem("cvquickAnswers")) || {};
+  } catch (error) {
+    return {};
+  }
+}
+
+function saveAnswers() {
+  try {
+    localStorage.setItem("cvquickAnswers", JSON.stringify(answers));
+  } catch (error) {
+    // The app still works if browser storage is unavailable.
+  }
+}
+
+function renderQuestion() {
+  const item = questions[currentQuestion];
+  const saved = answers[item.key] || "";
+
+  const input = item.type === "textarea"
+    ? `<textarea id="answerInput" autocomplete="off">${escapeHtml(saved)}</textarea>`
+    : `<input id="answerInput" type="text" autocomplete="on" value="${escapeHtml(saved)}">`;
+
+  let html = `
+    <h2>${escapeHtml(item.title)}</h2>
+    <p>Question ${currentQuestion + 1} of ${questions.length}</p>
+    <label for="answerInput">${escapeHtml(item.question)}</label>
+    ${input}
+  `;
+
+  if (item.example) {
+    html += `
+      <div class="example">
+        <strong>Helpful example:</strong><br>
+        ${escapeHtml(item.example)}
+      </div>
+    `;
+  }
+
+  questionArea.innerHTML = html;
+
+  progressBar.style.width =
+    ((currentQuestion + 1) / questions.length * 100) + "%";
+
+  backButton.disabled = currentQuestion === 0;
+
+  nextButton.textContent =
+    currentQuestion === questions.length - 1
+      ? "Create my CV"
+      : "Next";
+
+  errorMessage.textContent = "";
+
+  const answerInput = document.getElementById("answerInput");
+
+  if (answerInput) {
+    answerInput.focus();
+
+    answerInput.addEventListener("keydown", function(event) {
+      if (
+        event.key === "Enter" &&
+        !event.shiftKey &&
+        item.type !== "textarea"
+      ) {
+        event.preventDefault();
+        goNext();
       }
-    ];
+    });
+  }
+}
 
-    let currentQuestion = 0;
-    const answers = {};
+function saveCurrentAnswer() {
+  const input = document.getElementById("answerInput");
 
-    const formScreen = document.getElementById("formScreen");
-    const resultScreen = document.getElementById("resultScreen");
-    const questionArea = document.getElementById("questionArea");
-    const progressBar = document.getElementById("progressBar");
-    const backButton = document.getElementById("backButton");
-    const nextButton = document.getElementById("nextButton");
-    const cvOutput = document.getElementById("cvOutput");
-    const feedbackForm = document.getElementById("feedbackForm");
-    const feedbackStatus = document.getElementById("feedbackStatus");
+  if (input) {
+    answers[questions[currentQuestion].key] = input.value.trim();
+    saveAnswers();
+  }
+}
 
-    function escapeHtml(value) {
-      return String(value || "").replace(/[&<>"']/g, function (character) {
-        const characters = {
-          "&": "&amp;",
-          "<": "&lt;",
-          ">": "&gt;",
-          """: "&quot;",
-          "'": "&#039;"
-        };
+function validateCurrentAnswer() {
+  const item = questions[currentQuestion];
+  const value = answers[item.key] || "";
 
-        return characters[character];
-      });
+  if (item.required && !value) {
+    errorMessage.textContent = "Please answer this question before continuing.";
+    const input = document.getElementById("answerInput");
+
+    if (input) {
+      input.focus();
     }
 
-    function showQuestion() {
-      const question = questions[currentQuestion];
-      const savedAnswer = answers[question.key] || "";
+    return false;
+  }
 
-      const input = question.type === "textarea"
-        ? `<textarea id="answerInput" autofocus>${escapeHtml(savedAnswer)}</textarea>`
-        : `<input id="answerInput" autofocus value="${escapeHtml(savedAnswer)}">`;
+  errorMessage.textContent = "";
+  return true;
+}
 
-      let content = `
-        <h2>${question.title}</h2>
+function goNext() {
+  saveCurrentAnswer();
 
-        <p class="small">
-          Question ${currentQuestion + 1} of ${questions.length}
-        </p>
+  if (!validateCurrentAnswer()) {
+    return;
+  }
 
-        <label for="answerInput">${question.text}</label>
-        ${input}
-      `;
+  if (currentQuestion < questions.length - 1) {
+    currentQuestion += 1;
+    renderQuestion();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  } else {
+    createCV();
+  }
+}
 
-      if (question.example) {
-        content += `
-          <div class="example">
-            <strong>Helpful example:</strong><br>
-            ${question.example}
-          </div>
-        `;
-      }
+function goBack() {
+  saveCurrentAnswer();
 
-      questionArea.innerHTML = content;
+  if (currentQuestion > 0) {
+    currentQuestion -= 1;
+    renderQuestion();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+}
 
-      progressBar.style.width =
-        ((currentQuestion + 1) / questions.length * 100) + "%";
+function splitIntoBullets(text) {
+  if (!text) {
+    return "<li>Add relevant experience or projects.</li>";
+  }
 
-      backButton.disabled = currentQuestion === 0;
-
-      nextButton.textContent =
-        currentQuestion === questions.length - 1
-          ? "Create my CV"
-          : "Next";
-
-      const answerInput = document.getElementById("answerInput");
-
-      if (answerInput) {
-        answerInput.focus();
-      }
-    }
-
-    function saveCurrentAnswer() {
-      const answerInput = document.getElementById("answerInput");
-
-      if (answerInput) {
-        answers[questions[currentQuestion].key] =
-          answerInput.value.trim();
-      }
-    }
-
-    function goNext() {
-      saveCurrentAnswer();
-
-      if (currentQuestion < questions.length - 1) {
-        currentQuestion++;
-        showQuestion();
-      } else {
-        createCV();
-      }
-    }
-
-    function goBack() {
-      saveCurrentAnswer();
-
-      if (currentQuestion > 0) {
-        currentQuestion--;
-        showQuestion();
-      }
-    }
-
-    function createBullets(text, fallback) {
-      if (!text) {
-        return `<li>${fallback}</li>`;
-      }
-
-      return text
-        .split(/[.!?
+  return text
+    .split(/[.!?
 ]+/)
-        .map(item => item.trim())
-        .filter(item => item.length > 0)
-        .map(item => `<li>${escapeHtml(item.replace(/^[-•]s*/, ""))}</li>`)
-        .join("");
-    }
+    .map(function(part) {
+      return part.trim();
+    })
+    .filter(Boolean)
+    .map(function(part) {
+      return "<li>" + escapeHtml(
+        part.replace(/^[-•]s*/, "")
+      ) + "</li>";
+    })
+    .join("");
+}
 
-    function createCV() {
-      const name = answers.name || "Your Name";
-      const contact = answers.contact || "Add phone and email";
-      const location = answers.location || "";
-      const role = answers.role || "professional opportunity";
+function createCV() {
+  const name = answers.name || "Your Name";
+  const contact = answers.contact || "Add your phone and email";
+  const location = answers.location || "";
+  const role = answers.role || "professional opportunity";
+  const skills = answers.skills || "Add your key skills and strengths.";
+  const education = answers.education || "Add your education and training.";
+  const languages = answers.languages || "Add your languages.";
 
-      const summary = answers.skills
-        ? answers.skills
-        : "Motivated applicant seeking a " + role + " opportunity.";
+  const summary =
+    skills +
+    " Seeking an opportunity to contribute these skills and grow in a " +
+    role +
+    " role.";
 
-      formScreen.classList.add("hidden");
-      resultScreen.classList.remove("hidden");
+  formScreen.classList.add("hidden");
+  resultScreen.classList.remove("hidden");
 
-      cvOutput.innerHTML = `
-        <h1>${escapeHtml(name)}</h1>
+  cvOutput.innerHTML = `
+    <h1>${escapeHtml(name)}</h1>
 
-        <div class="contact">
-          ${escapeHtml(contact)}
-          ${location ? " · " + escapeHtml(location) : ""}
-        </div>
+    <div class="contact">
+      ${escapeHtml(contact)}
+      ${location ? " · " + escapeHtml(location) : ""}
+    </div>
 
-        <h2>Professional Summary</h2>
-        <p>${escapeHtml(summary)}</p>
+    <h2>Professional Summary</h2>
+    <p>${escapeHtml(summary)}</p>
 
-        <h2>Core Skills</h2>
-        <p>${escapeHtml(answers.skills || "Add your key skills")}</p>
+    <h2>Core Skills</h2>
+    <p>${escapeHtml(skills)}</p>
 
-        <h2>Experience and Projects</h2>
-        <ul>
-          ${createBullets(
-            answers.experience,
-            "Add your work, informal work, volunteer work, or project experience."
-          )}
+    <h2>Experience and Projects</h2>
+    <ul>
+      ${splitIntoBullets(answers.experience)}
+      ${splitIntoBullets(answers.achievement)}
+    </ul>
 
-          ${createBullets(
-            answers.achievement,
-            "Add a problem you solved or task you completed successfully."
-          )}
-        </ul>
+    <h2>Education and Training</h2>
+    <p>${escapeHtml(education)}</p>
 
-        <h2>Education and Training</h2>
-        <p>
-          ${escapeHtml(
-            answers.education || "Add your education and training."
-          )}
-        </p>
+    <h2>Languages</h2>
+    <p>${escapeHtml(languages)}</p>
+  `;
 
-        <h2>Languages</h2>
-        <p>
-          ${escapeHtml(
-            answers.languages || "Add your languages."
-          )}
-        </p>
-      `;
-    }
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
 
-    function startAgain() {
-      window.location.reload();
-    }
+function startAgain() {
+  if (!confirm("Delete your current answers and start again?")) {
+    return;
+  }
 
-    nextButton.addEventListener("click", goNext);
-    backButton.addEventListener("click", goBack);
+  currentQuestion = 0;
+  answers = {};
 
-    document
-      .getElementById("printButton")
-      .addEventListener("click", function () {
-        window.print();
-      });
+  try {
+    localStorage.removeItem("cvquickAnswers");
+  } catch (error) {
+    // Continue even if storage cannot be cleared.
+  }
 
-    document
-      .getElementById("restartButton")
-      .addEventListener("click", startAgain);
+  resultScreen.classList.add("hidden");
+  formScreen.classList.remove("hidden");
+  renderQuestion();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
 
-    feedbackForm.addEventListener("submit", function () {
-      feedbackStatus.textContent =
-        "Thank you. Your feedback is being sent.";
+backButton.addEventListener("click", goBack);
+nextButton.addEventListener("click", goNext);
+
+document.getElementById("printButton").addEventListener("click", function() {
+  window.print();
+});
+
+document.getElementById("startAgainButton").addEventListener(
+  "click",
+  startAgain
+);
+
+feedbackForm.addEventListener("submit", async function(event) {
+  event.preventDefault();
+
+  if (
+    feedbackForm.action.includes("PASTE_YOUR_FORMSPREE_ENDPOINT_HERE")
+  ) {
+    feedbackStatus.className = "error";
+    feedbackStatus.textContent =
+      "Feedback is not connected yet. Add your Formspree endpoint first.";
+    return;
+  }
+
+  feedbackStatus.className = "";
+  feedbackStatus.textContent = "Sending feedback...";
+
+  try {
+    const response = await fetch(feedbackForm.action, {
+      method: "POST",
+      body: new FormData(feedbackForm),
+      headers: {
+        Accept: "application/json"
+      }
     });
 
-    showQuestion();
-  </script>
+    if (response.ok) {
+      feedbackForm.reset();
+      feedbackStatus.className = "success";
+      feedbackStatus.textContent = "Thank you. Your feedback was sent.";
+    } else {
+      throw new Error("Feedback submission failed");
+    }
+  } catch (error) {
+    feedbackStatus.className = "error";
+    feedbackStatus.textContent =
+      "The feedback could not be sent. Please try again later.";
+  }
+});
+
+renderQuestion();
+</script>
 </body>
 </html>
